@@ -1,0 +1,516 @@
+/* ========== ОСНОВНЫЕ СТИЛИ С ФОНОВОЙ КАРТИНКОЙ ========== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-image: url('/static/background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* Полупрозрачный слой поверх фона */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.6);  /* ПРОЗРАЧНОСТЬ 0.6 */
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    backdrop-filter: blur(2px);
+}
+
+/* ========== ЗАГОЛОВКИ ========== */
+h1 {
+    text-align: center;
+    color: #333;
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+h2 {
+    color: #444;
+    margin: 40px 0 20px 0;
+    padding-bottom: 10px;
+    border-bottom: 3px solid #667eea;
+    display: inline-block;
+}
+
+.subtitle {
+    text-align: center;
+    color: #555;
+    margin-bottom: 30px;
+    font-size: 1.1em;
+}
+
+/* ========== ССЫЛКА НА АДМИНКУ ========== */
+.admin-link {
+    text-align: right;
+    margin-bottom: 20px;
+}
+
+.admin-link a {
+    color: #667eea;
+    text-decoration: none;
+    padding: 8px 15px;
+    border: 2px solid #667eea;
+    border-radius: 20px;
+    transition: all 0.3s;
+    background: rgba(255,255,255,0.3);
+}
+
+.admin-link a:hover {
+    background: #667eea;
+    color: white;
+}
+
+/* ========== КАРТОЧКИ УСЛУГ ========== */
+.services {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    margin: 30px 0;
+}
+
+.service-card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    padding: 25px;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+    border: 1px solid rgba(0,0,0,0.1);
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    border-color: #667eea;
+}
+
+.service-icon {
+    font-size: 50px;
+    margin-bottom: 15px;
+}
+
+.service-card h3 {
+    color: #667eea;
+    margin-bottom: 10px;
+    font-size: 1.3em;
+}
+
+.service-card p {
+    color: #555;
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+
+.price {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #764ba2;
+    margin-top: 10px;
+}
+
+/* ========== КАРТОЧКИ ОТЗЫВОВ ========== */
+.reviews {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 25px;
+    margin: 30px 0;
+}
+
+.review-card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    padding: 20px;
+    border-left: 5px solid #667eea;
+}
+
+.review-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+}
+
+.review-header strong {
+    font-size: 1.1em;
+    color: #333;
+}
+
+.rating {
+    color: #fbbf24;
+    font-size: 1.1em;
+}
+
+.review-card p {
+    color: #555;
+    font-style: italic;
+    line-height: 1.5;
+    margin: 10px 0;
+}
+
+.date {
+    color: #999;
+    font-size: 0.85em;
+    margin-top: 10px;
+    text-align: right;
+}
+
+/* ========== КОНТАКТЫ И КАРТА ========== */
+.contact-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin: 30px 0;
+}
+
+.contact-info-block {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    padding: 25px;
+}
+
+.contact-item {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 25px;
+    padding: 10px;
+    border-radius: 10px;
+    transition: background 0.3s;
+}
+
+.contact-item:hover {
+    background: white;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.contact-icon {
+    font-size: 30px;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.contact-details h3 {
+    margin: 0 0 5px 0;
+    color: #333;
+}
+
+.contact-details p {
+    margin: 0;
+    color: #555;
+}
+
+.contact-details a {
+    color: #667eea;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.contact-details a:hover {
+    text-decoration: underline;
+}
+
+.map-container {
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* ========== ПОДВАЛ ========== */
+.footer {
+    margin-top: 50px;
+    padding-top: 20px;
+    border-top: 2px solid rgba(102, 126, 234, 0.5);
+    text-align: right;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.footer-content p {
+    margin: 0;
+    color: #555;
+    font-size: 14px;
+}
+
+.footer-content a {
+    color: #667eea;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.footer-content a:hover {
+    text-decoration: underline;
+}
+
+/* ========== СТИЛИ АДМИН-ПАНЕЛИ ========== */
+.admin-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.login-card {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    width: 400px;
+    text-align: center;
+}
+
+.login-card h2 {
+    margin-bottom: 30px;
+    border: none;
+    display: block;
+}
+
+.login-card input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+.login-card button {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: transform 0.2s;
+}
+
+.login-card button:hover {
+    transform: translateY(-2px);
+}
+
+/* Статистика */
+.stats {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.stat {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    padding: 25px;
+    border-radius: 15px;
+    text-align: center;
+    min-width: 150px;
+}
+
+.stat h3 {
+    font-size: 2em;
+    margin-bottom: 5px;
+}
+
+/* Меню админки */
+.admin-menu {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+
+.admin-menu a, .btn-add, .btn-back {
+    display: inline-block;
+    padding: 12px 24px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: transform 0.2s;
+}
+
+.admin-menu a:hover, .btn-add:hover, .btn-back:hover {
+    transform: translateY(-2px);
+}
+
+.btn-back {
+    background: #6c757d;
+}
+
+/* Таблицы */
+.table {
+    width: 100%;
+    background: white;
+    border-collapse: collapse;
+    margin-top: 20px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.table th, .table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.table th {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+}
+
+.table tr:hover {
+    background: #f8f9fa;
+}
+
+/* Формы */
+input, textarea, select {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+button {
+    padding: 12px 24px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: transform 0.2s;
+}
+
+button:hover {
+    transform: translateY(-2px);
+}
+
+/* Алёрты */
+.alert {
+    padding: 12px 20px;
+    margin: 10px 0;
+    border-radius: 8px;
+}
+
+.alert-success {
+    background: #d4edda;
+    color: #155724;
+    border-left: 4px solid #28a745;
+}
+
+.alert-danger {
+    background: #f8d7da;
+    color: #721c24;
+    border-left: 4px solid #dc3545;
+}
+
+.alert-info {
+    background: #d1ecf1;
+    color: #0c5460;
+    border-left: 4px solid #17a2b8;
+}
+
+/* ========== АДАПТИВНОСТЬ ========== */
+@media (max-width: 768px) {
+    .container, .admin-container {
+        padding: 15px;
+    }
+    
+    h1 {
+        font-size: 1.8em;
+    }
+    
+    .services, .reviews, .contact-wrapper {
+        grid-template-columns: 1fr;
+    }
+    
+    .login-card {
+        width: 90%;
+        padding: 25px;
+    }
+    
+    .table {
+        font-size: 12px;
+    }
+    
+    .table th, .table td {
+        padding: 8px;
+    }
+    
+    .footer-content {
+        justify-content: center;
+        text-align: center;
+    }
+}
+.footer {
+    margin-top: 50px;
+    padding-top: 20px;
+    border-top: 2px solid rgba(102, 126, 234, 0.5);
+    text-align: right;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.footer-content p {
+    margin: 0;
+    color: #555;
+    font-size: 14px;
+}
+
+.footer-content a {
+    color: #667eea;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.footer-content a:hover {
+    text-decoration: underline;
+}

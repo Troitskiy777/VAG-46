@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% if service %}Редактировать{% else %}Добавить{% endif %} услугу</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="admin-container">
+        <h1>{% if service %}✏️ Редактировать{% else %}➕ Добавить{% endif %} услугу</h1>
+        
+        <form method="POST">
+            <div class="form-group">
+                <label>Название услуги</label>
+                <input type="text" name="title" value="{{ service.title if service else '' }}" required>
+            </div>
+            
+            <div class="form-group">
+                <label>Описание</label>
+                <textarea name="description" rows="5" required>{{ service.description if service else '' }}</textarea>
+            </div>
+            
+            <div class="form-group">
+                <label>Цена</label>
+                <input type="text" name="price" value="{{ service.price if service else '' }}" placeholder="от 5000 ₽" required>
+            </div>
+            
+            <div class="form-group">
+                <label>Иконка (эмодзи)</label>
+                <input type="text" name="icon" value="{{ service.icon if service else '🔧' }}" required>
+            </div>
+            
+            <div class="form-group">
+                <label>
+                    <input type="checkbox" name="is_active" {% if not service or service.is_active %}checked{% endif %}>
+                    Активна (показывать на сайте)
+                </label>
+            </div>
+            
+            <button type="submit">Сохранить</button>
+            <a href="/admin/services" class="btn-back">Отмена</a>
+        </form>
+    </div>
+</body>
+</html>

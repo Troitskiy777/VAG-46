@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% if review %}Редактировать{% else %}Добавить{% endif %} отзыв</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="admin-container">
+        <h1>{% if review %}✏️ Редактировать{% else %}➕ Добавить{% endif %} отзыв</h1>
+        
+        <form method="POST">
+            <div class="form-group">
+                <label>Имя клиента</label>
+                <input type="text" name="name" value="{{ review.name if review else '' }}" required>
+            </div>
+            
+            <div class="form-group">
+                <label>Автомобиль</label>
+                <input type="text" name="car" value="{{ review.car if review else '' }}" placeholder="Volkswagen Passat" required>
+            </div>
+            
+            <div class="form-group">
+                <label>Рейтинг (1-5)</label>
+                <select name="rating" required>
+                    {% for i in range(1, 6) %}
+                    <option value="{{ i }}" {% if review and review.rating == i %}selected{% endif %}>
+                        {{ i }} звезд
+                    </option>
+                    {% endfor %}
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label>Текст отзыва</label>
+                <textarea name="text" rows="5" required>{{ review.text if review else '' }}</textarea>
+            </div>
+            
+            <div class="form-group">
+                <label>
+                    <input type="checkbox" name="is_active" {% if not review or review.is_active %}checked{% endif %}>
+                    Активен (показывать на сайте)
+                </label>
+            </div>
+            
+            <button type="submit">Сохранить</button>
+            <a href="/admin/reviews" class="btn-back">Отмена</a>
+        </form>
+    </div>
+</body>
+</html>

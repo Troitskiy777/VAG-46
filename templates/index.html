@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VAG46 - Профессиональный ремонт VAG в Курске</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🚗 VAG46</h1>
+        <p class="subtitle">Профессиональный ремонт Volkswagen, Audi, Skoda, Seat в Курске</p>
+        
+        <div class="admin-link">
+            <a href="/admin/login">🔐 Админ-панель</a>
+        </div>
+        
+        <!-- УСЛУГИ -->
+        <h2>Наши услуги</h2>
+        <div class="services">
+            {% for service in services %}
+            <div class="service-card">
+                <div class="service-icon">{{ service.icon }}</div>
+                <h3>{{ service.title }}</h3>
+                <p>{{ service.description }}</p>
+                <div class="price">{{ service.price }}</div>
+            </div>
+            {% endfor %}
+        </div>
+        
+        <!-- ОТЗЫВЫ -->
+        <h2>Отзывы клиентов</h2>
+        <div class="reviews">
+            {% for review in reviews %}
+            <div class="review-card">
+                <div class="review-header">
+                    <strong>{{ review.name }}</strong>
+                    <div class="rating">
+                        {% for i in range(review.rating) %}⭐{% endfor %}
+                    </div>
+                </div>
+                <div><small>{{ review.car }}</small></div>
+                <p>"{{ review.text }}"</p>
+                <div class="date">{{ review.date }}</div>
+            </div>
+            {% endfor %}
+        </div>
+        
+        <!-- КОНТАКТЫ И КАРТА -->
+        <h2>Контакты</h2>
+        <div class="contact-wrapper">
+            <div class="contact-info-block">
+                <div class="contact-item">
+                    <div class="contact-icon">📍</div>
+                    <div class="contact-details">
+                        <h3>Адрес</h3>
+                        <p>Магистральный пр-д, 22/1, Курск, Курская обл., 305025</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">📞</div>
+                    <div class="contact-details">
+                        <h3>Телефон</h3>
+                        <p><a href="tel:+79524924646">8 (952) 492-46-46</a></p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">🕐</div>
+                    <div class="contact-details">
+                        <h3>Режим работы</h3>
+                        <p>Пн-Сб: 9:00 - 19:00</p>
+                        <p>Вс: Выходной</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">🔧</div>
+                    <div class="contact-details">
+                        <h3>Специализация</h3>
+                        <p>Volkswagen, Audi, Skoda, Seat</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="map-container">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d158039.9653994078!2d36.013403660574994!3d51.76276124573527!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x412f1b7a085b834d%3A0x968fd086128385b9!2sVag46!5e0!3m2!1sru!2sru!4v1777984959625!5m2!1sru!2sru" 
+                    width="100%" 
+                    height="350" 
+                    style="border:0; border-radius: 15px;" 
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </div>
+    </div>
+     <footer class="footer">
+            <div class="footer-content">
+                <p>Сайт разработал: <strong>Иван Т.</strong></p>
+                <p>Telegram: <a href="https://t.me/vazlaren" target="_blank">@vazlaren</a></p>
+            </div>
+        </footer>
+</body>
+</html>
